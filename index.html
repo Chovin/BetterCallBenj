@@ -250,7 +250,7 @@
                                         </p>
                                     </div>
                                     <div class="valign-wrapper right">
-                                        <a class="btn waves-effect waves-light" href="#contact">book</a>
+                                        <a class="btn waves-effect waves-light" href="#contact" aria-label="Free Consultation">book</a>
                                     </div>
                                 </div>
                             </li>
@@ -262,7 +262,7 @@
                                         </p>
                                     </div>
                                     <div class="valign-wrapper right">
-                                        <a class="btn waves-effect waves-light" href="#contact">book</a>
+                                        <a class="btn waves-effect waves-light" href="#contact" aria-label="Bribe">book</a>
                                     </div>
                                 </div>
                             </li>
@@ -313,6 +313,9 @@
                                 <label for="message"><b>Message</b> (required)</label>
                             </div>
                         </div>
+                        <div class="hide">
+                            <input type="text" id="type">
+                        </div>
                         <div class="row">
                             <button class="btn waves-effect waves-light btn-large" type="submit" name="action">SEND</button>
                         </div>
@@ -348,17 +351,20 @@
             let username_e = document.getElementById('username')
             let case_number_e = document.getElementById('case')
             let message_e = document.getElementById('message')
+            let type_e = document.getElementById('type')
             let username = username_e.value
             let case_number = case_number_e.value
             let message = message_e.value
+            let type = type_e.value
             username_e.value = ''
             case_number_e.value = ''
             message_e.value = ''
+            type_e.value = ''
 
             document.getElementById('header').scrollIntoView({
                 behavior: 'smooth'
             });
-            await fetch('https://discord.com/api/webhooks/1341111977769959525/iLYaynvdPlEaHIvuzdv-vtbLm3TP_vmapCaxYCZ1NB27C6iGqXB_dLA1igg65yqkdUWw?thread_id=1338864855897346118', {
+            await fetch('https://discord.com/api/webhooks/1341105102760710215/g7kVhb-lj4dRQ2if5l6BKoE7DGub9TJFiamTmqLBqj8E7FP8GSPrANiUAnvu7PaI8Y-7', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -367,7 +373,7 @@
                     "embeds": [
                         {
                             "title": '@' + username,
-                            "description": message,
+                            "description": type + message,
                             "color": 16773458,
                             "footer": {
                                 "text": "Case #" + case_number
@@ -400,7 +406,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
+                var type = this.getAttribute('aria-label')
+                if (type) {
+                    document.getElementById('type').value = '**`['+type+']`** '
+                } else {
+                    document.getElementById('type').value = ''
+                }
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
