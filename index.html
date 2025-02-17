@@ -189,7 +189,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav>
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">BETTER CALL BENJ</a>
@@ -345,10 +345,19 @@
     <script>
         document.getElementById('contact-form').addEventListener("submit", async (event) => {
             event.preventDefault();
-            let username = document.getElementById('username').value
-            let case_number = document.getElementById('case').value
-            let message = document.getElementById('message').value
-            console.log(username, case_number, message)
+            let username_e = document.getElementById('username')
+            let case_number_e = document.getElementById('case')
+            let message_e = document.getElementById('message')
+            let username = username_e.value
+            let case_number = case_number_e.value
+            let message = message_e.value
+            username_e.value = ''
+            case_number_e.value = ''
+            message_e.value = ''
+
+            document.getElementById('header').scrollIntoView({
+                behavior: 'smooth'
+            });
             await fetch('https://discord.com/api/webhooks/1341111977769959525/iLYaynvdPlEaHIvuzdv-vtbLm3TP_vmapCaxYCZ1NB27C6iGqXB_dLA1igg65yqkdUWw?thread_id=1338864855897346118', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
@@ -369,6 +378,7 @@
                     "content": ""
                 })
             })
+
         })
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -385,6 +395,16 @@
                     })
                 })
             })
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
