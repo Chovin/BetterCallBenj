@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Call Benj</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFEB3B;
+            --secondary-color: #EA332B;
+            --main-font: 'Archivo Black', 'Roboto', sans-serif;
+            --secondary-font: 'Space Grotesk', 'Roboto', sans-serif;
+            --header-height: 100px;
+        }
+        p, body {
+            font-family: var(--secondary-font);
+            color: black;
+            font-size: 12pt;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--main-font);
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+        a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        .hero h1, .hero h2 {
+            color: var(--primary-color)
+        }
+        body {
+            background-color: var(--primary-color);
+        }
+        .nav-wrapper {
+            padding: 0 50px;
+            background-color: var(--primary-color);
+        }
+        nav {
+            height: var(--header-height);
+            line-height: var(--header-height);
+            box-shadow: none;
+            background-color: var(--primary-color);
+        }
+
+        @media only screen and (max-width: 991px) {
+            nav .nav-wrapper a.sidenav-trigger i {
+                font-size: 3em;
+                color: var(--secondary-color);
+                height: var(--header-height);
+                line-height: var(--header-height);
+            }
+            nav .nav-wrapper a {
+                text-decoration: none;
+            }
+            div.hero {
+                background-color: unset;
+            }
+        }
+        nav .brand-logo {
+            color: var(--secondary-color);
+            font-family: var(--main-font);
+            font-size: 1.5em;;
+        }
+        nav ul a {
+            color: var(--secondary-color);
+            line-height: 64px;
+            margin-top: calc(var(--header-height) - 64px*1.25);
+        }
+        #nav-selected {
+            border-bottom: 2px var(--secondary-color) solid;;
+        }
+        .btn, .btn:hover, .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+            background: var(--secondary-color);
+            border-radius: 50px;
+        }
+        .btn:hover {
+            filter: brightness(85%);
+        }
+        .sidenav {
+            background-color: var(--secondary-color);
+        }
+        .sidenav li>a {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            text-align: center;
+            min-height: 500px;
+            height: 100%;
+            margin: 0 50px;
+            /* background-image: url('assets/imgs/benj\ banner.png'); */
+            background-size: cover;
+            background-color: rgba(77, 77, 77, 0.5);
+        }
+        .hero img {
+            background-color: rgba(77, 77, 77, 0.5);
+        }
+        .hero .text {
+            background-color: var(--secondary-color);
+        }
+        .hero h2 {
+            font-size: 2.9em;
+        }
+        #banner-text {
+            position: absolute;
+            top: 20%;
+            left: 0%;
+            /* transform: translate(-50%, -50%); */
+        }
+
+        @media only screen and (min-width: 993px){
+            nav a.button-collapse {
+                display: block;
+            }
+        }
+
+        .section {
+            padding: 50px;
+            width: 100%;
+        }
+        #appointment i {
+            display: inline-flex;
+            vertical-align: top;
+        }
+
+        .collection {
+            border-radius: 3px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2)
+        }
+        .collection .title {
+            font-weight: bolder;
+        }
+        .collection p {
+            margin: 0
+        }
+        .collection .btn {
+            background-color: black;
+            border-radius: 3px;
+            position: relative;
+            margin-right: 10px;
+
+        }
+        .collection .row {
+            margin: 20px -10px;
+            padding: 0;
+        }
+
+        #contact form {
+            margin-top: 3.5em;
+        }
+
+        #contact form input, #contact form textarea {
+            border: 1px black solid;
+            border-radius: 20px;
+            padding: 0 10px;
+            margin: 0;
+        }
+        #contact form textarea {
+            min-height: 8em;
+            padding: 0.75em;
+            margin-right: -1em;
+        }
+        #contact form label {
+            font-size: 1.25em;
+            transform: translateY(-30px) scale(0.8);
+            color: black;
+        }
+        #contact form .btn {
+            margin-left: 1em;
+        }
+
+        .page-footer {
+            background-color: var(--primary-color);
+        }
+
+        footer .container {
+            /* padding: 50px; */
+            margin: 0 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">BETTER CALL BENJ</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#" id="nav-selected">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#appointment" class="btn btn-large">BOOK NOW</a></li>
+                </ul>
+
+                <ul class="sidenav" id="mobile-demo">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#appointment">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="hero">
+            <h1 class="hide-on-large-only text">JUDGE BENJ</h1>
+            <img class="responsive-img" src="assets/imgs/benj_banner.png" alt="banner" width="100%">
+            <div class="container hide-on-med-and-down" id="banner-text">
+                <h1>JUDGE BENJ</h1>
+                <h2>JUSTICE SERVED<br>"FAIR" AND "FIRM"</h2>
+            </div>
+            <h2 class="hide-on-large-only text">JUSTICE SERVED<br>"FAIR" AND "FIRM"</h2>
+        </div>
+        
+        <div class="section container" id="appointment">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h2>BOOK AN APPOINTMENT</h2>
+                    <p>Have a court date? Better Call Benj!<br>
+                    Need to take someone to court? Better Call Benj!<br>
+                    Need the judge on your side? Better <span style="text-decoration: line-through;">Bribe</span> Call Benj!</p>
+                    <p>Book a free consultation now.</p>
+                </div>
+                <div class="col s12 m5 right">
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="center-align">
+                                <i class="material-icons">perm_contact_calendar</i>
+                                <b>Select Appointment</b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <div class="row">
+                                    <div class="col s8">
+                                        <span class="title">Free Consultation</span>
+                                        <p>30 minutes
+                                        </p>
+                                    </div>
+                                    <div class="valign-wrapper right">
+                                        <a class="btn waves-effect waves-light" href="#contact">book</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div class="row">
+                                    <div class="col s8">
+                                        <span class="title">Bribe Me a Fancy Dinner (1 diamond)</span>
+                                        <p>1 hour
+                                        </p>
+                                    </div>
+                                    <div class="valign-wrapper right">
+                                        <a class="btn waves-effect waves-light" href="#contact">book</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section container" id="about">
+            <div class="row">
+                <div class="col s12 m6">
+                <img width="100%" src="assets/imgs/objection.jpg" alt="">
+                </div>
+                <div class="col s12 m5 right">
+                    <h2>MORE<br>ABOUT<br>JUDGE<br>BENJ</h2>
+                    <p>Do you not trust the court system? 
+                    Do the attorneys and prosecutors just seem to bicker back and forth without getting anywhere?
+                    <br>Judge Benj is a very humble, incorruptible, principled judge; the best and only judge for you. 
+                    Pay him enough and he’ll help you out in a <em>different direction</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section container" id="contact">
+            <div class="row">
+                <div class="col s12 m5 left">
+                    <h2>CONTACT US</h2>
+                    <p>Interested in working together? Fill out some info and we will be in touch shortly. We can’t wait to hear from you!</p>
+                </div>
+                <div class="col s12 m6 right">
+                    <form id="contact-form" action="send_message">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="username" type="text" class="validate" required>
+                                <label for="username"><b>Discord Username</b> (required)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="case" type="number" class="validate" required>
+                                <label for="case"><b>Case Number</b> (required)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="message" class="materialize-textarea" required></textarea>
+                                <label for="message"><b>Message</b> (required)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light btn-large" type="submit" name="action">SEND</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h4>Better Call Benj</h4>
+              <p>Made with ❤️ for <a href="https://discord.gg/vyVQpReHFu" target="_blank">Genesis</a></p>
+            </div>
+            <div class="col l3 push-l4 s12">
+              <h5 class="black-text">Location</h5>
+              <p>12 West Island Road<br>New Florida, SP 12345</p>
+            </div>
+            <div class="col l1 push-l4 s12">
+                <h5 class="black-text">Contact</h5>
+                <a href="https://discord.com/channels/196787630107525120/1338864855897346118/1340846090899030057" target="_blank">@benj_2007</a>
+              </div>
+          </div>
+        </div>
+      </footer>
+    
+
+    <script>
+        document.getElementById('contact-form').addEventListener("submit", async (event) => {
+            event.preventDefault();
+            let username = document.getElementById('username').value
+            let case_number = document.getElementById('case').value
+            let message = document.getElementById('message').value
+            console.log(username, case_number, message)
+            await fetch('https://discord.com/api/webhooks/1341111977769959525/iLYaynvdPlEaHIvuzdv-vtbLm3TP_vmapCaxYCZ1NB27C6iGqXB_dLA1igg65yqkdUWw?thread_id=1338864855897346118', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: "GavelMail",
+                    avatar_url: "https://cdn.discordapp.com/attachments/1338864855897346118/1341109072321314928/gavel2.jpg?ex=67b4cca7&is=67b37b27&hm=56a084a60a8f42be617e317a90efad71972afc941611eaccc92e8190cf085680&",
+                    "embeds": [
+                        {
+                            "title": '@' + username,
+                            "description": message,
+                            "color": 16773458,
+                            "footer": {
+                                "text": "Case #" + case_number
+                            },
+                            "timestamp": new Date().toISOString()
+                        }
+                    ],
+                    "content": ""
+                })
+            })
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var sidenavs = M.Sidenav.init(elems, {});
+            elems.forEach((elem) => {
+                elem.querySelectorAll('a').forEach((a) => {
+                    a.addEventListener('click', (e) => {
+                        for (const nav of sidenavs) {
+                            nav.close()
+                        }
+                    })
+                })
+            })
+        });
+    </script>
+</body>
+</html>
